@@ -1,4 +1,22 @@
-﻿*.csv
-*.ipynb
-*.py
-!cut_combined_cuttlefish_tracking.csv
+# ── Anciens fichiers de travail à la racine (non suivis) ──
+/*.csv
+/*.ipynb
+/*.py
+
+# ── Data/ : seuls les fichiers listés ici sont suivis ──
+#    (les CSV régénérés par add_features_* dépassent souvent la limite de 100 Mo de GitHub)
+Data/*.csv
+!Data/cut_combined_cuttlefish_tracking.csv
+!Data/cut_cuttlefish_with_new_features_smooth_1.csv
+!Data/cut_cuttlefish_with_features_smooth_1.csv
+
+# ── Sorties recalculées par le notebook (cache Leiden, figures intermédiaires) ──
+Results/analysis_results*/
+
+# ── Vidéos (trop lourdes, non incluses) ──
+Videos/
+
+# ── Python / Jupyter ──
+__pycache__/
+.ipynb_checkpoints/
+*.pyc

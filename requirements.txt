@@ -1,0 +1,14 @@
+# Versions utilisées pour l'analyse (Python 3.11)
+numpy==2.4.4
+pandas==3.0.1
+scipy==1.17.0
+scikit-learn==1.8.0
+matplotlib==3.10.8
+seaborn==0.13.2
+igraph==1.0.0
+leidenalg==0.11.0
+umap-learn==0.5.12
+numba==0.65.0
+opencv-python>=4.13
+openpyxl==3.1.5
+pillow==12.1.1

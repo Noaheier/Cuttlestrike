@@ -1,0 +1,58 @@
+{
+  "name": "reference_best",
+  "note": "",
+  "date": "2026-10-16 13:54:07",
+  "DATASET": "cut_new",
+  "SMOOTH_FILES": {
+    "1": "C:\\Users\\nonoh\\Documents\\01Travail\\02_CREC\\cuttle_strike\\cut_cuttlefish_with_new_features_smooth_1.csv"
+  },
+  "OUT_DIR": "C:\\Users\\nonoh\\Documents\\01Travail\\02_CREC\\cuttle_strike\\analysis_results_cut_new",
+  "SELECTED_WINDOW": 1,
+  "FEATURES": [
+    "distance_to_shrimp",
+    "attack_side",
+    "bearing_to_prey",
+    "cuttle_approach_speed",
+    "orbit_speed",
+    "who_moves"
+  ],
+  "FEATURE_WEIGHTS": {
+    "distance_to_shrimp": 1.0,
+    "attack_side": 3.0,
+    "bearing_to_prey": 1.0,
+    "cuttle_approach_speed": 2.0,
+    "orbit_speed": 5.0,
+    "who_moves": 4.0
+  },
+  "EXCLUDE_ANIMALS": [
+    152,
+    133
+  ],
+  "ORBIT_MIN_DEG_S": 0.0,
+  "FRAME_STEP": 1,
+  "LEIDEN_K": 300,
+  "LEIDEN_RES": 1.0,
+  "LEIDEN_K2": 3,
+  "LEIDEN_RES2": 5.0,
+  "explorer": {
+    "col": "cluster",
+    "n_s": 6,
+    "n_cl": 23,
+    "seqvec_weights": {
+      "w_hist": 1.0,
+      "w_temporal": 1.0,
+      "w_lastapp": 1.0,
+      "w_duration": 0.5,
+      "w_align": 1.0,
+      "w_dynamics": 1.0,
+      "w_speed": 0.5,
+      "w_path": 1,
+      "w_start": 1
+    },
+    "knn_k": 10,
+    "seuil_min": 15,
+    "desc": "SeqVec (hist, temporal, lastapp, duration, speed, path, start, align, dynamics)"
+  },
+  "n_groups_explorer": 6,
+  "n_groups_optimal": 6
+}

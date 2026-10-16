@@ -1,0 +1,75 @@
+[GROUPES] groupes : mapping_optimal | 183 individus | 6 groupes : A (44), B (32), C (31), D (27), E (26), F (23)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+1. COMPORTEMENT — médianes par groupe (unités réelles)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+        n  mal classés  silhouette  durée (s)  distance parcourue (mm)  vitesse (mm/s)  % immobile  distance départ (mm)  distance moy. (mm)  approche (mm/s)  orbite (°/s)  who_moves  côté (°)  côté frappe (°)  visée (°)  nb segments
+A      44            3         0.1        6.0                    145.4            25.9         0.7                 132.1                83.1             19.5           2.6        1.4     124.9            135.1        5.5          6.0
+B      32            2         0.1        3.1                     95.0            33.5         0.0                  52.6                55.2              9.2           9.6        2.0     108.8            140.4        4.9          3.0
+C      31            3         0.1        3.0                     30.7             9.5        40.7                  58.7                58.1              3.8           0.8       -0.1     112.0            119.0       12.0          3.0
+D      27            2         0.1        3.4                     33.0             9.8         7.6                  51.3                53.2              0.7           1.1        0.8      35.1             49.6        8.2          4.0
+E      26            2         0.1       11.2                    165.4            16.5        29.0                 187.9               120.8             11.3           1.8        1.1      42.6             59.6        7.0          8.0
+F      23            6         0.1        8.6                     59.2             5.9        52.1                 162.3               104.0              1.5           1.2       -1.2      57.8             99.5       30.8          6.0
+TOUS  183           18         0.1        4.8                     81.8            15.1        13.5                  94.3                71.7              8.3           2.0        0.8      91.1            112.0        7.2          5.0
+
+Écart à la moyenne (score z : +1 = un écart-type au-dessus de la moyenne de tous les individus) :
+   durée (s)  distance parcourue (mm)  vitesse (mm/s)  % immobile  distance départ (mm)  distance moy. (mm)  approche (mm/s)  orbite (°/s)  who_moves  côté (°)  côté frappe (°)  visée (°)  nb segments
+A       0.08                     0.74            0.59       -0.49                  0.41                0.20             0.88         -0.14       0.55      0.88             0.60      -0.45         0.40
+B      -0.56                    -0.03            0.86       -0.63                 -0.65               -0.47             0.12          1.53       0.71      0.33             0.56      -0.27        -0.51
+C      -0.40                    -0.72           -0.47        0.46                 -0.78               -0.51            -0.27         -0.50      -0.61      0.67             0.22       0.21        -0.44
+D       0.02                    -0.65           -0.71        0.11                 -0.77               -0.56            -0.78         -0.40       0.06     -1.11            -1.20       0.08        -0.18
+E       0.62                     0.71           -0.13        0.25                  1.08                1.08             0.04         -0.23       0.21     -1.06            -0.60      -0.18         0.52
+F       0.44                    -0.44           -0.71        0.79                  0.85                0.41            -0.62         -0.46      -1.53     -0.56            -0.13       1.08         0.17
+
+Paramètres qui ne diffèrent PAS entre groupes (Kruskal-Wallis p >= 0.05) : —
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+2. FAMILLES SEQVEC — lesquelles séparent chaque groupe ?
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Score = (distance aux autres - distance interne) / distance aux autres (0 = ne sépare pas, 1 = parfait) :
+   hist  temporal  lastapp  align  dynamics  duration  speed  path  start
+A  0.31      0.24     0.21   0.12      0.21      0.01   0.41  0.45   0.46
+B  0.29      0.19     0.23   0.20      0.19      0.56   0.55  0.35   0.30
+C  0.29      0.16     0.15   0.21      0.23      0.20   0.12  0.43   0.41
+D  0.25      0.08     0.06   0.17      0.29     -0.01   0.29  0.37   0.37
+E  0.28      0.15    -0.07   0.18      0.26      0.38   0.26  0.56   0.49
+F  0.26      0.16    -0.09   0.11      0.28      0.11   0.24  0.14   0.46
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+3. ÉTATS — les plus présents dans chaque groupe (et leur description)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  A : C0 22% (approche ↑, who ↑) | C7 16% (who ↑, approche ↑) | C5 15% (approche ↑, côté ↑)   sur-représentés : C7 x2.7, C0 x2.5
+  B : C13 26% (orbite ↑, who ↑) | C6 19% (approche ↓, dist ↓) | C4 11% (côté ↑, dist ↓)   sur-représentés : C13 x6.1, C6 x3.1
+  C : C4 23% (côté ↑, dist ↓) | C9 20% (côté ↑, visée ↓) | C10 12% (who ↓, dist ↓)   sur-représentés : C9 x3.8, C4 x3.6
+  D : C14 18% (visée ↑, côté ↓) | C2 18% (approche ↓, visée ↓) | C1 15% (approche ↑, who ↑)   sur-représentés : C14 x4.4, C2 x2.5
+  E : C1 19% (approche ↑, who ↑) | C2 16% (approche ↓, visée ↓) | C11 12% (côté ↓, who ↑)   sur-représentés : C19 x3.0, C11 x2.9
+  F : C8 23% (who ↓, dist ↑) | C12 18% (visée ↑, who ↓)   sur-représentés : C12 x4.4, C8 x3.8
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+4. INDIVIDUS MAL CLASSÉS (silhouette < 0 : plus proches d'un autre groupe)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+ID (silhouette → groupe dont il est le plus proche) ; triés du plus mal classé au moins mal classé :
+  A (3/44) : 82 (-0.13 → B), 187 (-0.02 → B), 175 (-0.00 → E)
+  B (2/32) : 149 (-0.09 → A), 130 (-0.03 → A)
+  C (3/31) : 184 (-0.05 → A), 90 (-0.03 → A), 136 (-0.01 → F)
+  D (2/27) : 58 (-0.07 → B), 60 (-0.06 → F)
+  E (2/26) : 144 (-0.08 → A), 86 (-0.01 → A)
+  F (6/23) : 24 (-0.14 → A), 34 (-0.11 → C), 72 (-0.08 → A), 35 (-0.06 → A), 163 (-0.05 → E), 102 (-0.04 → E)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+5. RÉSUMÉ — ce qui caractérise chaque groupe
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  A (n=44, mal classés 3) : côté (°) ↑ 124.9 | approche (mm/s) ↑ 19.5 | distance parcourue (mm) ↑ 145.4 | côté frappe (°) ↑ 135.1
+        séparé surtout par : start, path   |   états typiques : C0 (approche ↑, who ↑), C7 (who ↑, approche ↑), C5 (approche ↑, côté ↑)
+  B (n=32, mal classés 2) : orbite (°/s) ↑↑ 9.6 | vitesse (mm/s) ↑ 33.5 | who_moves ↑ 2.0 | distance départ (mm) ↓ 52.6
+        séparé surtout par : duration, speed   |   états typiques : C13 (orbite ↑, who ↑), C6 (approche ↓, dist ↓), C4 (côté ↑, dist ↓)
+  C (n=31, mal classés 3) : distance départ (mm) ↓ 58.7 | distance parcourue (mm) ↓ 30.7 | côté (°) ↑ 112.0 | who_moves ↓ -0.1
+        séparé surtout par : path, start   |   états typiques : C4 (côté ↑, dist ↓), C9 (côté ↑, visée ↓), C10 (who ↓, dist ↓)
+  D (n=27, mal classés 2) : côté frappe (°) ↓↓ 49.6 | côté (°) ↓↓ 35.1 | approche (mm/s) ↓ 0.7 | distance départ (mm) ↓ 51.3
+        séparé surtout par : path, start   |   états typiques : C14 (visée ↑, côté ↓), C2 (approche ↓, visée ↓), C1 (approche ↑, who ↑)
+  E (n=26, mal classés 2) : distance départ (mm) ↑↑ 187.9 | distance moy. (mm) ↑↑ 120.8 | côté (°) ↓↓ 42.6 | distance parcourue (mm) ↑ 165.4
+        séparé surtout par : path, start   |   états typiques : C1 (approche ↑, who ↑), C2 (approche ↓, visée ↓), C11 (côté ↓, who ↑)
+  F (n=23, mal classés 6) : who_moves ↓↓ -1.2 | visée (°) ↑↑ 30.8 | distance départ (mm) ↑ 162.3 | % immobile ↑ 52.1
+        séparé surtout par : start, dynamics   |   états typiques : C8 (who ↓, dist ↑), C12 (visée ↑, who ↓)
+
+[GROUPES] tableaux sauvegardés dans C:\Users\nonoh\Documents\01Travail\02_CREC\cuttle_strike\analysis_results_cut_new
