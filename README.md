@@ -8,7 +8,11 @@ per-frame features → behavioural states (Leiden clustering) → per-individual
 
 ```
 Code/
-  all_cuttlefish.ipynb          main notebook (French)
+  1_compute.ipynb               full analysis WITHOUT figures (clustering, strategies, regrouping) + session save
+  2_model.ipynb                 model characterisation (UMAP, frame types, medoids, probabilities, group explanation)
+  3_results.ipynb               results figures (variables, comparisons, significance, trajectories, polar / KDR, catch types)
+  4_interactive.ipynb           interactive tools (SeqVec explorer, 3D, video viewer / browser, simulator)
+  all_cuttlefish.ipynb          complete notebook (French)
   all_cuttlefish_english.ipynb  same notebook in English
   add_features_full.py          computes the features (SOURCE="cut": start -> strike)  -> Data/cut_cuttlefish_with_new_features_smooth_*.csv
   add_features_cut_2.py         previous feature computation (July version)             -> Data/cut_cuttlefish_with_features_smooth_*.csv
@@ -26,6 +30,13 @@ Figures/                        figures produced by the notebook
 ```
 
 ## Running the analysis
+
+**Split notebooks (recommended)** — open them from `Code/`:
+1. `1_compute.ipynb`: run everything, then set `DO_SAVE = True` and a `SAVE_NAME` in the save cell and rerun it.
+2. `2_model.ipynb`, `3_results.ipynb`, `4_interactive.ipynb`: set `LOAD_NAME` to that session
+   (default `"reference_best"`) and run only the figures you need — nothing is recomputed.
+
+**Complete notebook** — `all_cuttlefish_english.ipynb` (or the French version) contains everything in one file:
 
 ```bash
 pip install -r requirements.txt
