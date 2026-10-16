@@ -1,61 +1,61 @@
-# Cuttlestrike — stratégies de chasse de la seiche
+# Cuttlestrike — cuttlefish hunting strategies
 
-Analyse du comportement de chasse de la seiche (*Sepia*) à partir du tracking vidéo (DeepLabCut) :
-features par frame → états comportementaux (clustering Leiden) → séquences d'états par individu
-→ stratégies de chasse (distance SeqVec + groupes Leiden kNN).
+Analysis of cuttlefish (*Sepia*) hunting behaviour from video tracking (DeepLabCut):
+per-frame features → behavioural states (Leiden clustering) → per-individual state sequences
+→ hunting strategies (SeqVec distance + Leiden kNN groups).
 
-## Organisation
+## Layout
 
 ```
 Code/
-  all_cuttlefish.ipynb          notebook principal (français)
-  all_cuttlefish_english.ipynb  même notebook en anglais
-  add_features_full.py          calcule les features (SOURCE="cut" : début -> frappe)  -> Data/cut_cuttlefish_with_new_features_smooth_*.csv
-  add_features_cut_2.py         ancien calcul des features (version de juillet)        -> Data/cut_cuttlefish_with_features_smooth_*.csv
+  all_cuttlefish.ipynb          main notebook (French)
+  all_cuttlefish_english.ipynb  same notebook in English
+  add_features_full.py          computes the features (SOURCE="cut": start -> strike)  -> Data/cut_cuttlefish_with_new_features_smooth_*.csv
+  add_features_cut_2.py         previous feature computation (July version)             -> Data/cut_cuttlefish_with_features_smooth_*.csv
 Data/
-  cut_combined_cuttlefish_tracking.csv           tracking DeepLabCut coupé (début -> frappe), entrée de add_features_*
-  cut_cuttlefish_with_new_features_smooth_1.csv  features utilisées par le notebook (DATASET = "cut_new")
-  cut_cuttlefish_with_features_smooth_1.csv      anciennes features (DATASET = "cut_old")
-  Data_cuttlfish_strike.xlsx                     informations par individu (frames de début / frappe, échelle, fps, type de capture)
-  Data_cuttlfish_strike_complet.xlsx             version complète (analyses comparatives)
-  Classeur1.xlsx                                 données complémentaires (analyse des touches)
-  mapping_optimal_shrimp.json                    stratégies de la crevette (comparaison seiche x crevette)
+  cut_combined_cuttlefish_tracking.csv           cut DeepLabCut tracking (start -> strike), input of add_features_*
+  cut_cuttlefish_with_new_features_smooth_1.csv  features used by the notebook (DATASET = "cut_new")
+  cut_cuttlefish_with_features_smooth_1.csv      previous features (DATASET = "cut_old")
+  Data_cuttlfish_strike.xlsx                     per-individual information (start / strike frames, scale, fps, catch type)
+  Data_cuttlfish_strike_complet.xlsx             complete version (comparative analyses)
+  Classeur1.xlsx                                 additional data (hit analysis)
+  mapping_optimal_shrimp.json                    shrimp strategies (cuttlefish x shrimp comparison)
 Results/
-  reference_best/               session de référence (voir ci-dessous)
-Figures/                        figures produites par le notebook
+  reference_best/               reference session (see below)
+Figures/                        figures produced by the notebook
 ```
 
-## Lancer l'analyse
+## Running the analysis
 
 ```bash
 pip install -r requirements.txt
 cd Code
-jupyter notebook all_cuttlefish.ipynb
+jupyter notebook all_cuttlefish_english.ipynb
 ```
 
-Les chemins sont **relatifs** : le notebook doit être ouvert depuis `Code/`.
-Exécuter les cellules dans l'ordre : configuration (cellule 0) → clustering Leiden des frames (cellule 2)
-→ explorateur SeqVec → analyses, vidéos, explication des groupes.
+Paths are **relative**: the notebook must be opened from `Code/`.
+Run the cells in order: configuration (cell 0) → Leiden clustering of the frames (cell 2)
+→ SeqVec explorer → analyses, videos, group explanation.
 
-Les vidéos ne sont pas incluses (trop lourdes) : les placer dans `Videos/videos_catch/`
-(ou changer `VIDEO_ROOT` dans la cellule 0) pour utiliser le viewer et le navigateur vidéo.
+Videos are not included (too large): put them in `Videos/videos_catch/`
+(or change `VIDEO_ROOT` in cell 0) to use the video viewer and the strategy browser.
 
-## Recharger la session de référence
+## Reloading the reference session
 
-`Results/reference_best/` contient tout l'état de l'analyse : configuration, clusters et UMAP,
-séquences, distance SeqVec, groupes de stratégies, tableaux d'explication des groupes, figures
-et copie du code qui l'a produite.
+`Results/reference_best/` contains the full state of the analysis: configuration, clusters and UMAP,
+sequences, SeqVec distance, strategy groups, group explanation tables, figures
+and a copy of the code that produced it.
 
-Dans la dernière cellule du notebook :
+In the last cell of the notebook:
 ```python
 DO_LOAD   = True
 LOAD_NAME = "reference_best"
 ```
-puis exécuter la cellule (après la cellule 0, sans relancer la cellule 2).
+then run the cell (after cell 0, without rerunning cell 2).
 
-## Régénérer les données
+## Regenerating the data
 
-`Code/add_features_full.py` recalcule les features à partir de `Data/cut_combined_cuttlefish_tracking.csv`
-et de `Data/Data_cuttlfish_strike.xlsx`. Les fichiers de lissage 10 et 30, ainsi que la version complète
-(`SOURCE = "full"`, tracking `combined_cuttlefish_tracking.csv` de 662 Mo), dépassent la limite de GitHub
-et ne sont pas inclus : ils se régénèrent avec ce script.
+`Code/add_features_full.py` recomputes the features from `Data/cut_combined_cuttlefish_tracking.csv`
+and `Data/Data_cuttlfish_strike.xlsx`. The smoothing 10 and 30 files, as well as the full version
+(`SOURCE = "full"`, 662 MB `combined_cuttlefish_tracking.csv` tracking), exceed GitHub's file size limit
+and are not included: they can be regenerated with this script.
