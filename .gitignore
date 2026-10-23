@@ -20,3 +20,7 @@ Videos/
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+
+# ── Session files over the GitHub limit (100 MB): kept locally only ──
+Results/_test_shrimp/df.pkl
+Results/_test_shrimp/results.pkl

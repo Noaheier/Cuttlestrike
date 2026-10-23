@@ -12,10 +12,12 @@ Code/
   2_model.ipynb                 model characterisation (UMAP, frame types, medoids, probabilities, group explanation)
   3_results.ipynb               results figures (variables, comparisons, significance, trajectories, polar / KDR, catch types)
   4_interactive.ipynb           interactive tools (SeqVec explorer, 3D, video viewer / browser, simulator)
+  5_shrimp_impact.ipynb         does the shrimp behaviour influence the cuttlefish strategy?
   all_cuttlefish.ipynb          complete notebook (French)
   all_cuttlefish_english.ipynb  same notebook in English
   add_features_full.py          computes the features (SOURCE="cut": start -> strike)  -> Data/cut_cuttlefish_with_new_features_smooth_*.csv
   add_features_cut_2.py         previous feature computation (July version)             -> Data/cut_cuttlefish_with_features_smooth_*.csv
+  add_features_shrimp.py        shrimp metrics (30 s before the cuttlefish activity -> strike) -> Data/shrimp_features_smooth_*.csv
 Data/
   cut_combined_cuttlefish_tracking.csv           cut DeepLabCut tracking (start -> strike), input of add_features_*
   cut_cuttlefish_with_new_features_smooth_1.csv  features used by the notebook (DATASET = "cut_new")
@@ -50,6 +52,17 @@ Run the cells in order: configuration (cell 0) → Leiden clustering of the fram
 
 Videos are not included (too large): put them in `Videos/videos_catch/`
 (or change `VIDEO_ROOT` in cell 0) to use the video viewer and the strategy browser.
+
+## Shrimp analysis
+
+1. `Code/add_features_shrimp.py` computes the shrimp metrics frame by frame (speed, acceleration peaks,
+   swimming direction, angular speed, cuttlefish seen by the shrimp, distance) from 30 s before the start
+   of the cuttlefish activity (`Frame_start`) to the strike. Column `phase` = `pre` / `hunt`.
+   It needs the full tracking `combined_cuttlefish_tracking.csv` (not included, 662 MB): put it in `Data/`.
+2. `1_compute.ipynb` with `SUBJECT = "shrimp"` (cell 0) clusters the shrimp behaviour with the same pipeline;
+   the start of the cuttlefish activity is marked on the time figures of `2_model` / `3_results` (dashed cyan line).
+3. `5_shrimp_impact.ipynb` compares the shrimp behaviour with the strategies of a cuttlefish session
+   (`CUTTLE_SESSION`), and the shrimp groups with them (`SHRIMP_SESSION`).
 
 ## Reloading the reference session
 

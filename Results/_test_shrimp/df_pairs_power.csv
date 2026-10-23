@@ -1,0 +1,7 @@
+g1,g2,n1,n2,cohens_d,power_obs,p_value,significant,n_min_needed
+A,B,62,55,2.019,1.0,0.0,True,1
+A,C,62,34,0.48,0.955,0.0,True,18
+A,D,62,33,0.491,0.958,0.0,True,17
+B,C,55,34,2.555,1.0,0.0,True,1
+B,D,55,33,1.755,1.0,0.0,True,2
+C,D,34,33,0.374,0.846,0.0,True,29

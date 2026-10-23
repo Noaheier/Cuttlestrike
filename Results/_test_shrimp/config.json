@@ -1,0 +1,60 @@
+{
+  "name": "_test_shrimp",
+  "note": "",
+  "date": "2026-10-23 14:30:55",
+  "DATASET": "shrimp",
+  "SMOOTH_FILES": {
+    "1": "C:\\Users\\nonoh\\Documents\\01Travail\\02_CREC\\cuttle_strike\\Dossier_final\\Data\\shrimp_features_smooth_1.csv"
+  },
+  "OUT_DIR": "C:\\Users\\nonoh\\Documents\\01Travail\\02_CREC\\cuttle_strike\\Dossier_final\\Results\\analysis_results_shrimp",
+  "SELECTED_WINDOW": 1,
+  "FEATURES": [
+    "shrimp_speed_log",
+    "shrimp_burst_rate",
+    "shrimp_forward_log",
+    "shrimp_turn_log",
+    "shrimp_view_cuttle",
+    "distance_log"
+  ],
+  "FEATURE_WEIGHTS": {
+    "shrimp_speed_log": 1.0,
+    "shrimp_burst_rate": 1.0,
+    "shrimp_forward_log": 1.0,
+    "shrimp_turn_log": 1.0,
+    "shrimp_view_cuttle": 1.0,
+    "distance_log": 1.0
+  },
+  "EXCLUDE_ANIMALS": [
+    152,
+    133
+  ],
+  "SUBJECT": "shrimp",
+  "SPEED_COL": "shrimp_speed_mm_s",
+  "ORBIT_MIN_DEG_S": 0.0,
+  "FRAME_STEP": 3,
+  "LEIDEN_K": 300,
+  "LEIDEN_RES": 1.0,
+  "LEIDEN_K2": 3,
+  "LEIDEN_RES2": 5.0,
+  "explorer": {
+    "col": "supercluster",
+    "n_s": 4,
+    "n_cl": 12,
+    "seqvec_weights": {
+      "w_hist": 1.0,
+      "w_temporal": 1.0,
+      "w_lastapp": 1.0,
+      "w_duration": 0.5,
+      "w_align": 1.0,
+      "w_dynamics": 1.0,
+      "w_speed": 0.5,
+      "w_path": 1.0,
+      "w_start": 1.0
+    },
+    "knn_k": 10,
+    "min_run_len": 15,
+    "desc": "SeqVec (hist, temporal, lastapp, duration, speed, path, start, align, dynamics)"
+  },
+  "n_groups_explorer": 4,
+  "n_groups_optimal": 4
+}
