@@ -20,6 +20,7 @@ Métriques (unités dans le nom ; versions *_log = pour le clustering) :
   shrimp_turn_speed_deg_s  vitesse de rotation du corps sur lui-même
   shrimp_view_cuttle       où est la seiche vue par la crevette : 0 = devant sa tête, 180 = derrière
   distance_mm              distance seiche - crevette
+  cuttle_speed_mm_s        vitesse de la seiche (centre du corps), pour la comparer à celle de la crevette
 """
 from pathlib import Path
 import pandas as pd
@@ -215,6 +216,16 @@ for SMOOTH_WINDOW in ALL_SMOOTH_WINDOW:
     df["shrimp_speed_mm_s"] = v
     df["shrimp_speed_log"]  = np.log1p(v)
 
+    #   vitesse de la SEICHE (centre du corps Apex-TopMantle), mêmes règles : comparaison
+    #   seiche / crevette dans 5_shrimp_impact (qui change de vitesse en premier ?)
+    df["cuttle_cx"] = (df["Apex_x"] + df["TopMantle_x"]) / 2
+    df["cuttle_cy"] = (df["Apex_y"] + df["TopMantle_y"]) / 2
+    cvx, cvy = velocity(df, "cuttle_cx", "cuttle_cy")
+    cv = np.sqrt(cvx ** 2 + cvy ** 2) * MM * FPS
+    cv = cv.clip(upper=cv.quantile(0.995))
+    cv[cv < SPEED_NOISE_MM_S] = 0.0
+    df["cuttle_speed_mm_s"] = cv
+
     #   accélération = norme de la variation du vecteur vitesse (mm/s²)
     ax_ = vx.groupby(gid).diff().fillna(0) * MM * FPS * FPS
     ay_ = vy.groupby(gid).diff().fillna(0) * MM * FPS * FPS
@@ -274,7 +285,7 @@ for SMOOTH_WINDOW in ALL_SMOOTH_WINDOW:
     features = ["shrimp_speed_log", "shrimp_accel_log", "shrimp_burst_rate", "shrimp_forward_log",
                 "shrimp_turn_log", "shrimp_view_cuttle", "distance_log"]
     print("\n=== NaN / Inf / résumé (médiane pre | hunt) ===")
-    for f in features + ["shrimp_speed_mm_s", "shrimp_swim_dir_deg", "shrimp_turn_speed_deg_s", "distance_mm"]:
+    for f in features + ["shrimp_speed_mm_s", "cuttle_speed_mm_s", "shrimp_swim_dir_deg", "shrimp_turn_speed_deg_s", "distance_mm"]:
         n_nan, n_inf = df[f].isna().sum(), np.isinf(df[f]).sum()
         ok = "✅" if (n_nan == 0 or f == "shrimp_swim_dir_deg") and n_inf == 0 else "❌"
         med = df.groupby("phase")[f].median()
